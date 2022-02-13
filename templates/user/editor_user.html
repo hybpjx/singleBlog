@@ -1,0 +1,132 @@
+{% extends 'user/user_profile.html' %}
+
+
+
+{% block title %}
+    <li class="is-active"><a>编辑用户</a></li>
+{% endblock %}
+
+{% block content %}
+
+    {#        <form action="{% url 'user:editor' %}" method="post" enctype="multipart/form-data">#}
+    {#        {% csrf_token %}#}
+    {#        <div class="field is-horizontal">#}
+    {#            <div class="field-label is-normal">#}
+    {#              <label for="{{ form.email.id_for_label }}" class="label">#}
+    {#                  {{ form.email.label }}#}
+    {#              </label>#}
+    {#            </div>#}
+    {#            <div class="field-body">#}
+    {#              <div class="field">#}
+    {#                <div class="control">#}
+    {#                    {{ form.email }}#}
+    {#                </div>#}
+    {#              </div>#}
+    {#            </div>#}
+    {#        </div>#}
+    {#          {% for field in user_profile_form %}#}
+    {#          <div class="field is-horizontal" >#}
+    {#              <div class="field-label is-normal">#}
+    {#                <label for="{{ field.id_for_label }}" class="label">{{ field.label }}</label>#}
+    {#              </div>#}
+    {#              <div class="field-body">#}
+    {#                <div class="field">#}
+    {#                  <div class="control">#}
+    {#                     {{ field }}#}
+    {#                  </div>#}
+    {#                </div>#}
+    {#              </div>#}
+    {#          </div>#}
+    {#          {% endfor %}#}
+    {#          <input class=" button is-primary is-pulled-right" type="submit" value="保存修改">#}
+    {#          <div class=" is-clearfix"></div>#}
+    {##}
+    {#          </form>#}
+    {##}
+    <form action="{% url 'user:editor' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <fieldset disabled>
+            <div class="field">
+                <label class="label">邮箱</label>
+                <div class="control">
+                    <input class="input" type="email" value="{{ user.owner.email }}">
+                </div>
+            </div>
+        </fieldset>
+
+
+        <div class="field">
+            <label class="label">昵称</label>
+            <div class="control">
+                <input class="input" type="text" placeholder="{{ user.nickname }}" name="nickName">
+            </div>
+
+        </div>
+
+
+        <div class="field">
+            <label class="label">个人简介</label>
+            <div class="control">
+                <input class="input" type="text" placeholder="{{ user.desc }}" name="desc">
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="label">个性签名</label>
+            <div class="control">
+                <input class="input" type="text" placeholder="{{ user.signature }}" name="signature">
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="label">生日</label>
+            <div class="control">
+                <label for="">
+                    <input class="input" type="date" value="{{ user.birth }}" name="birth">
+                </label>
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="label">性别</label>
+            <div class="control">
+                {% if user.gender == "男" %}
+                    <input class="select2-selection__choice" type="radio" name="gender" checked value="男">男
+                    <input class="select2-selection__choice" type="radio" name="gender" value="女">女
+                    <input class="select2-selection__choice" type="radio" name="gender" value="保密">保密
+                {% elif user.gender == "女" %}
+                    <input class="select2-selection__choice" type="radio" name="gender" value="男">男
+                    <input class="select2-selection__choice" type="radio" name="gender" checked value="女">女
+                    <input class="select2-selection__choice" type="radio" name="gender" value="保密">保密
+                {% else %}
+                    <input class="select2-selection__choice" type="radio" name="gender" value="男">男
+                    <input class="select2-selection__choice" type="radio" name="gender" value="女">女
+                    <input class="select2-selection__choice" type="radio" name="gender" checked value="保密">保密
+                {% endif %}
+
+            </div>
+        </div>
+
+
+        <div class="field">
+            <label class="label">地址</label>
+            <div class="control">
+                <input class="input" type="text" placeholder="{{ user.address }}" name="address">
+            </div>
+        </div>
+
+{#        <div class="field">#}
+{#            <label class="label">头像</label>#}
+{#            <div class="control">#}
+{#                <input class="file" type="file" value="" name="avatar">#}
+{#            </div>#}
+{#        </div>#}
+
+        <p class="has-text-warning">{{ errmsg }}</p>
+
+        <input class=" button is-primary is-pulled-right" type="submit" value="保存修改">
+        <div class=" is-clearfix"></div>
+
+    </form>
+
+{% endblock %}

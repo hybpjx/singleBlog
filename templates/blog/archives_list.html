@@ -1,0 +1,17 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}
+    <title>
+        {{ year }}年{{ month }}月的归档
+    </title>
+
+{% endblock %}
+
+{% block archives %}
+    每月归档：{{ year }}年{{ month }} 月
+    <div class="tags has-addons is-pulled-right">
+        <span class="tag is-dark">共</span>
+        <span class="tag is-info">{{ article_list.count }}篇</span>
+    </div>
+{% endblock %}
+

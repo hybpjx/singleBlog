@@ -1,0 +1,28 @@
+{% extends 'user/base.html' %}
+
+{% block title %}
+    <title>登录页面</title>
+{% endblock %}
+
+
+{% block contain %}
+    <div class="container">
+    <div class="box">
+        <h1 class="is-uppercase has-text-centered has-text-weight-bold"> zic
+            <br> <span class="tag">登录</span>
+        </h1>
+        <hr class="dropdown-divider">
+        <form action="" method="post">
+            {% csrf_token %}
+
+            {{ form.as_p }}
+            <br>
+            <a class = " " href="{% url 'user:forget_pwd' %}">忘记密码</a>
+            <div class="is-clearfix"></div>
+            <input type="submit" style="margin-top: 1em" class="button is-link is-fullwidth" value="提交">
+        </form>
+    </div>
+    </div>
+{% endblock %}
+
+

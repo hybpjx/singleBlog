@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+{% load static sidebar %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block title %}
+        <title>个人博客</title>
+    {% endblock %}
+
+    <link rel="stylesheet" href="{% static 'css/bulma.css' %}">
+
+</head>
+<body>
+
+<nav class="pt-5">
+    <nav class="navbar is-info container" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="/">
+                <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+            </a>
+
+
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
+               data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div id="navbarBasicExample" class="navbar-menu">
+
+            {% block navbar-start %}
+                <div class="navbar-start">
+                    <a class="navbar-item" href="/">
+                        首页
+                    </a>
+
+                    {% get_category_list as category_list %}
+
+                    {% for category in category_list %}
+                        <a class="navbar-item" href="{% url 'blog:category_list' category.id %}">
+
+                            {{ category.name }}
+
+
+                        </a>
+                    {% endfor %}
+                    {#      <div class="navbar-item has-dropdown is-hoverable">#}
+                    {#        <a class="navbar-link">#}
+                    {#          More#}
+                    {#        </a>#}
+                    {##}
+                    {#        <div class="navbar-dropdown">#}
+                    {#          <a class="navbar-item">#}
+                    {#            About#}
+                    {#          </a>#}
+                    {#          <a class="navbar-item">#}
+                    {#            Jobs#}
+                    {#          </a>#}
+                    {#          <a class="navbar-item">#}
+                    {#            Contact#}
+                    {#          </a>#}
+                    {#          <hr class="navbar-divider">#}
+                    {#          <a class="navbar-item">#}
+                    {#            Report an issue#}
+                    {#          </a>#}
+                    {#        </div>#}
+                    {#      </div>#}
+
+                </div>
+            {% endblock %}
+
+
+            {% block navbar-end %}
+                <div class="navbar-end">
+                    <div class="navbar-item">
+
+                        {% if user.is_authenticated %}
+
+                            <div class="buttons">
+                            {% block public %}
+                                <a class="button is-right" href="{% url 'blog:public' %}" target="_blank">
+                                <strong>
+                                    发 布 文 章
+                                </strong></a>
+                                {% endblock %}
+
+
+
+                            <a class="button is-primary" href="{% url 'user:profile' %}"
+                               target="_blank"><strong>{{ request.user.username }}</strong></a>
+                            <a class="button is-light" href="{% url 'user:logout' %}">退出登录</a>
+
+                        {% else %}
+                            <div class="buttons">
+                                <a class="button is-primary" href="{% url 'user:register' %}" target="_blank">
+                                    <strong>注册</strong>
+                                </a>
+
+                                <a class="button is-light" href="{% url 'user:login' %}" target="_blank">
+                                    登录
+                                </a>
+
+                            </div>
+                        {% endif %}
+
+
+                        </div>
+                    </div>
+                </div>
+            {% endblock %}
+
+        </div>
+    </nav>
+</nav>
+
+<section class="section">
+
+
+    <div class="container">
+        <div class="columns">
+            <div class="column is-8">
+                {% block archives %}
+
+                {% endblock %}
+
+                {% block content_left %}
+                    {% if page_obj %}
+                        {% for article in page_obj %}
+                            <div class="box">
+                                <h1 class="is-size-5 has-text-weight-bold">
+                                    <a href="{% url 'blog:article_detail' article.id %}">
+                                        {% if article.title|length > 20 %}
+
+                                            {{ article.title|slice:":8" }}...
+
+                                        {% else %}
+
+                                            {{ article.title }}
+
+                                        {% endif %}
+                                        {#                            {{ article.title |truncatechars:7 }}#}
+                                    </a>
+                                </h1>
+                                <h1>
+                                    <div class="is-size-7 has-text-info-dark pt-1 pb-1">
+                                        <span class="mr-3"> 作者： {{ article.owner }}</span>
+                                        <span>发布时间：{{ article.create_time }}</span>
+
+                                    </div>
+
+                                    <p>
+                                        {% if article.desc|length > 32 %}
+                                            {{ article.desc|slice:":32" }}...
+                                        {% else %}
+                                            {{ article.desc }}
+                                        {% endif %}
+                                    </p>
+                                </h1>
+
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="box">
+                            <p class="has-text-info-dark">
+                                文章找不到了哦，请您换个关键字吧
+                            </p>
+                        </div>
+                    {% endif %}
+
+                    {% if page_obj %}
+
+                        <nav class="pagination is-centered" role="navigation" aria-label="pagination">
+                        {% if page_obj.has_previous %}
+                            <a class="pagination-previous" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+                        {% elif page_obj.has_next %}
+                            <a class="pagination-next" href="?page={{ page_obj.next_page_number }}">Next page</a>
+                        {% endif %} 
+                        
+                            <ul class="pagination-list">
+                                {% if page_obj.page_number > 3 %}
+                                    <li><a class="pagination-link" aria-label="Goto page {{ page_obj.start_index }}">{{ page_obj.start_index }}</a></li>
+                                    <li><span class="pagination-ellipsis">&hellip;</span></li>
+                                {% endif %}
+
+                                {% if page_obj.has_previous %}
+                                    <li><a class="pagination-link" aria-label="Goto page {{ page_obj.previous_page_number }}" href="?page = {{ page_obj.previous_page_number }}">{{ page_obj.previous_page_number }}</a></li>
+                                {% endif %}
+
+                                <li><a class="pagination-link is-current" aria-label="Page {{ page_obj.number }}"
+                                       aria-current="page">{{ page_obj.number }}</a></li>
+
+                                {% if page_obj.has_next %}
+
+                                    <li><a class="pagination-link" aria-label="Goto page {{ page_obj.next_page_number }}" href="?page={{ page_obj.next_page_number }}">
+                                        {{ page_obj.next_page_number }}</a></li>
+
+                                {% endif %}
+
+                                {% if page_obj.has_next %}
+
+
+
+                                {% endif %}
+{#                                {% if page_obj.end_index > 5 %}#}
+{#                                <li><span class="pagination-ellipsis">&hellip;</span></li>#}
+{#                                <li><a class="pagination-link" aria-label="Goto page {{ page_obj.end_index }}">{{ page_obj.end_index }}</a></li>#}
+{#                                {% endif %}#}
+                            </ul>
+                        </nav>
+
+
+                    {% endif %}
+
+
+                {% endblock %}
+
+
+            </div>
+
+
+            <div class="column is-4">
+                {% block content-right %}
+                    {% get_sidebar_list as sidebar_list %}
+                    {% for sidebar in sidebar_list %}
+
+
+                        <div class="box">
+
+                            <h1 class="is-size-5 title">{{ sidebar.title }}</h1>
+                            <p>{{ sidebar.get_content|safe }}</p>
+                        </div>
+
+                    {% endfor %}
+
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+
+</section>
+
+{% block footer %}
+
+    {#    <footer class="footer container ">#}
+    {#        <div class=" has-text-centered">#}
+    {#            这是文章的底部#}
+    {#        </div>#}
+    {#    </footer>#}
+
+
+
+    <section class="hero is-info container">
+        <div class="hero-body">
+            <p class="title center">
+                制作不易
+            </p>
+            <p class="subtitle">
+                 <strong>注册用户支持一下</strong>
+            </p>
+        </div>
+    </section>
+
+    <nav class="navbar container" role="navigation" aria-label="dropdown navigation">
+
+        <div class="navbar-menu">
+            <div class="navbar-start">
+                <div class="has-background-info-light navbar-item has-dropdown has-dropdown-up is-hoverable">
+                    <a href="{% url 'other:words' %}" class="is-size-5 navbar-link">
+                        在线帮助
+                    </a>
+
+                    <div class="navbar-dropdown">
+{#                        <a href=" " class="navbar-item">#}
+{#                            在线留言#}
+{#                        </a>#}
+                        <a href="{% url 'other:bug' %}" class="navbar-item is-size-6" target="_blank">
+                            问题提交
+                        </a>
+                        <a href="{% url 'other:words' %}" class="navbar-item is-size-6" target="_blank">
+                            留言板
+                        </a>
+{#                        <hr class="navbar-divider">#}
+{#                        <div class="navbar-item">#}
+{#                            Version 0.9.3#}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+
+
+
+{% endblock %}
+
+{% block bottomfiles %}
+
+{% endblock %}
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+ <form action="{% url 'blog:index' %}" method="get">
+    {% csrf_token %}
+{#    <div class="control has-icons-right">#}
+{#        <input type="search" class="input" name="keyword" placeholder="搜索" value="{{ keyword }}">#}
+{#        <span class="icon is-small is-right">#}
+{#            <i class="fas fa-search"></i>#}
+{#        </span>#}
+{#    </div>#}
+{#    <input type="submit">#}
+
+
+     <div class="field is-grouped">
+  <p class="control is-expanded">
+    <input type="search" class="input" name="keyword" placeholder="搜索" value="{{ keyword }}">
+  </p>
+  <p class="control">
+    <input type="submit" class="button is-info" value="搜索">
+
+  </p>
+</div>
+
+    </form>

@@ -1,0 +1,11 @@
+{% load sidebar %}
+
+{% get_new_list as new_list %}
+
+{% for new in new_list %}
+    <ul>
+        <li>
+            <a href="{% url 'blog:article_detail' new.id %}">{{ new.title }}</a>
+        </li>
+    </ul>
+{% endfor %}

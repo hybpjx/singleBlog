@@ -1,0 +1,13 @@
+{% load sidebar %}
+
+{% get_archives  as date_list %}
+
+
+
+{% for date in date_list %}
+<li>
+  <a href="{% url 'blog:archives' date.year date.month %}">
+    {{ date.year }} 年 {{ date.month }}  月
+  </a>
+</li>
+{% endfor %}

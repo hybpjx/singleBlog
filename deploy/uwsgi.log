@@ -1,0 +1,209 @@
+*** Starting uWSGI 2.0.20 (64bit) on [Wed Feb  9 22:13:44 2022] ***
+compiled with version: 8.3.0 on 09 February 2022 14:13:29
+os: Linux-5.10.60-amd64-desktop #1 SMP Thu Aug 26 18:24:56 CST 2021
+nodename: zic-PC
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 6
+current working directory: /home/zic/Desktop/singleBlog/deploy
+writing pidfile to /home/zic/Desktop/singleBlog/deploy/uwsgi.pid
+detected binary path: /home/zic/Desktop/singleBlog/venv/bin/uwsgi
+chdir() to /home/zic/Desktop/singleBlog
+your processes number limit is 23313
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to TCP address 127.0.0.1:8001 fd 3
+Python version: 3.7.3 (default, Apr  2 2021, 05:20:44)  [GCC 8.3.0]
+PEP 405 virtualenv detected: /home/zic/Desktop/singleBlog/venv
+Set PythonHome to /home/zic/Desktop/singleBlog/venv
+Python main interpreter initialized at 0xa7ea40
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 917136 bytes (895 KB) for 20 cores
+*** Operational MODE: preforking+threaded ***
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0xa7ea40 pid: 13624 (default app)
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI master process (pid: 13624)
+spawned uWSGI worker 1 (pid: 13629, cores: 2)
+spawned uWSGI worker 2 (pid: 13630, cores: 2)
+spawned uWSGI worker 3 (pid: 13632, cores: 2)
+spawned uWSGI worker 4 (pid: 13634, cores: 2)
+spawned uWSGI worker 5 (pid: 13636, cores: 2)
+spawned uWSGI worker 6 (pid: 13638, cores: 2)
+spawned uWSGI worker 7 (pid: 13640, cores: 2)
+spawned uWSGI worker 8 (pid: 13642, cores: 2)
+spawned uWSGI worker 9 (pid: 13644, cores: 2)
+spawned uWSGI worker 10 (pid: 13646, cores: 2)
+*** Starting uWSGI 2.0.20 (64bit) on [Wed Feb  9 22:15:06 2022] ***
+compiled with version: 8.3.0 on 09 February 2022 14:13:29
+os: Linux-5.10.60-amd64-desktop #1 SMP Thu Aug 26 18:24:56 CST 2021
+nodename: zic-PC
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 6
+current working directory: /home/zic/Desktop/singleBlog
+writing pidfile to /home/zic/Desktop/singleBlog/deploy/uwsgi.pid
+detected binary path: /home/zic/Desktop/singleBlog/venv/bin/uwsgi
+chdir() to /home/zic/Desktop/singleBlog
+your processes number limit is 23313
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+probably another instance of uWSGI is running on the same address (127.0.0.1:8001).
+bind(): Address already in use [core/socket.c line 769]
+./apps/blog/views.py:37: UnorderedObjectListWarning: Pagination may yield inconsistent results with an unordered object_list: <class 'apps.blog.models.Article'> QuerySet.
+  paginator = Paginator(article_list, 5)
+/home/zic/Desktop/singleBlog/venv/lib/python3.7/site-packages/django/template/defaulttags.py:65: UserWarning: A {% csrf_token %} was used in a template, but the context did not provide the value.  This is usually caused by not using RequestContext.
+  "A {% csrf_token %} was used in a template, but the context "
+[pid: 13646|app: 0|req: 1/1] 192.168.153.146 () {46 vars in 849 bytes} [Wed Feb  9 22:15:14 2022] GET / => generated 10835 bytes in 72 msecs (HTTP/1.1 200) 5 headers in 159 bytes (1 switches on core 0)
+./apps/blog/views.py:37: UnorderedObjectListWarning: Pagination may yield inconsistent results with an unordered object_list: <class 'apps.blog.models.Article'> QuerySet.
+  paginator = Paginator(article_list, 5)
+/home/zic/Desktop/singleBlog/venv/lib/python3.7/site-packages/django/template/defaulttags.py:65: UserWarning: A {% csrf_token %} was used in a template, but the context did not provide the value.  This is usually caused by not using RequestContext.
+  "A {% csrf_token %} was used in a template, but the context "
+[pid: 13644|app: 0|req: 1/2] 192.168.153.146 () {42 vars in 756 bytes} [Wed Feb  9 22:15:19 2022] GET / => generated 10835 bytes in 67 msecs (HTTP/1.1 200) 5 headers in 159 bytes (1 switches on core 0)
+[pid: 13646|app: 0|req: 2/3] 192.168.153.146 () {42 vars in 756 bytes} [Wed Feb  9 22:15:20 2022] GET / => generated 10835 bytes in 17 msecs (HTTP/1.1 200) 5 headers in 159 bytes (1 switches on core 1)
+...brutally killing workers...
+worker 1 buried after 1 seconds
+worker 2 buried after 1 seconds
+worker 3 buried after 1 seconds
+worker 4 buried after 1 seconds
+worker 5 buried after 1 seconds
+worker 6 buried after 1 seconds
+worker 7 buried after 1 seconds
+worker 8 buried after 1 seconds
+worker 9 buried after 1 seconds
+worker 10 buried after 1 seconds
+binary reloading uWSGI...
+chdir() to /home/zic/Desktop/singleBlog/deploy
+closing all non-uwsgi socket fds > 2 (max_fd = 1024)...
+found fd 3 mapped to socket 0 (127.0.0.1:8001)
+running /home/zic/Desktop/singleBlog/venv/bin/uwsgi
+[uWSGI] getting INI configuration from uwsgi.ini
+*** Starting uWSGI 2.0.20 (64bit) on [Wed Feb  9 22:23:53 2022] ***
+compiled with version: 8.3.0 on 09 February 2022 14:13:29
+os: Linux-5.10.60-amd64-desktop #1 SMP Thu Aug 26 18:24:56 CST 2021
+nodename: zic-PC
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 6
+current working directory: /home/zic/Desktop/singleBlog/deploy
+detected binary path: /home/zic/Desktop/singleBlog/venv/bin/uwsgi
+chdir() to /home/zic/Desktop/singleBlog
+your processes number limit is 23313
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 inherited INET address 127.0.0.1:8001 fd 3
+Python version: 3.7.3 (default, Apr  2 2021, 05:20:44)  [GCC 8.3.0]
+PEP 405 virtualenv detected: /home/zic/Desktop/singleBlog/venv
+Set PythonHome to /home/zic/Desktop/singleBlog/venv
+Python main interpreter initialized at 0x1b3b1a0
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 917136 bytes (895 KB) for 20 cores
+*** Operational MODE: preforking+threaded ***
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x1b3b1a0 pid: 13624 (default app)
+*** uWSGI is running in multiple interpreter mode ***
+gracefully (RE)spawned uWSGI master process (pid: 13624)
+spawned uWSGI worker 1 (pid: 16159, cores: 2)
+spawned uWSGI worker 2 (pid: 16160, cores: 2)
+spawned uWSGI worker 3 (pid: 16162, cores: 2)
+spawned uWSGI worker 4 (pid: 16164, cores: 2)
+spawned uWSGI worker 5 (pid: 16166, cores: 2)
+spawned uWSGI worker 6 (pid: 16168, cores: 2)
+spawned uWSGI worker 7 (pid: 16170, cores: 2)
+spawned uWSGI worker 8 (pid: 16172, cores: 2)
+spawned uWSGI worker 9 (pid: 16174, cores: 2)
+spawned uWSGI worker 10 (pid: 16176, cores: 2)
+*** Starting uWSGI 2.0.20 (64bit) on [Sat Feb 12 17:58:08 2022] ***
+compiled with version: 8.3.0 on 25 December 2021 09:26:50
+os: Linux-5.10.60-amd64-desktop #1 SMP Thu Aug 26 18:24:56 CST 2021
+nodename: zic-PC
+machine: x86_64
+clock source: unix
+pcre jit disabled
+detected number of CPU cores: 6
+current working directory: /home/zic/Desktop/singleBlog
+writing pidfile to /home/zic/Desktop/singleBlog/deploy/uwsgi.pid
+detected binary path: /home/zic/.virtualenvs/single/bin/uwsgi
+chdir() to /home/zic/Desktop/singleBlog
+your processes number limit is 23313
+your memory page size is 4096 bytes
+detected max file descriptor number: 1048576
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to TCP address 127.0.0.1:8001 fd 3
+Python version: 3.7.3 (default, Apr  2 2021, 05:20:44)  [GCC 8.3.0]
+PEP 405 virtualenv detected: /home/zic/Desktop/singleBlog/venv
+Set PythonHome to /home/zic/Desktop/singleBlog/venv
+Python main interpreter initialized at 0x20687d0
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 917136 bytes (895 KB) for 20 cores
+*** Operational MODE: preforking+threaded ***
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x20687d0 pid: 7572 (default app)
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI master process (pid: 7572)
+spawned uWSGI worker 1 (pid: 7573, cores: 2)
+spawned uWSGI worker 2 (pid: 7574, cores: 2)
+spawned uWSGI worker 3 (pid: 7575, cores: 2)
+spawned uWSGI worker 4 (pid: 7576, cores: 2)
+spawned uWSGI worker 5 (pid: 7577, cores: 2)
+spawned uWSGI worker 6 (pid: 7578, cores: 2)
+spawned uWSGI worker 7 (pid: 7579, cores: 2)
+spawned uWSGI worker 8 (pid: 7580, cores: 2)
+spawned uWSGI worker 9 (pid: 7581, cores: 2)
+spawned uWSGI worker 10 (pid: 7589, cores: 2)
+./apps/blog/views.py:37: UnorderedObjectListWarning: Pagination may yield inconsistent results with an unordered object_list: <class 'apps.blog.models.Article'> QuerySet.
+  paginator = Paginator(article_list, 5)
+/home/zic/Desktop/singleBlog/venv/lib/python3.7/site-packages/django/template/defaulttags.py:65: UserWarning: A {% csrf_token %} was used in a template, but the context did not provide the value.  This is usually caused by not using RequestContext.
+  "A {% csrf_token %} was used in a template, but the context "
+[pid: 7589|app: 0|req: 1/1] 192.168.153.146 () {40 vars in 719 bytes} [Sat Feb 12 17:58:31 2022] GET / => generated 10835 bytes in 179 msecs (HTTP/1.1 200) 5 headers in 159 bytes (1 switches on core 0)
+Not Found: /favicon.ico
+[pid: 7589|app: 0|req: 2/2] 192.168.153.146 () {40 vars in 660 bytes} [Sat Feb 12 17:58:33 2022] GET /favicon.ico => generated 3520 bytes in 6 msecs (HTTP/1.1 404) 4 headers in 136 bytes (1 switches on core 1)
+[pid: 7589|app: 0|req: 3/3] 192.168.153.146 () {42 vars in 778 bytes} [Sat Feb 12 17:58:40 2022] GET /article/2/ => generated 8744 bytes in 26 msecs (HTTP/1.1 200) 5 headers in 158 bytes (1 switches on core 0)
+[pid: 7589|app: 0|req: 4/4] 192.168.153.146 () {42 vars in 786 bytes} [Sat Feb 12 17:58:48 2022] GET /user/register/ => generated 2072 bytes in 9 msecs (HTTP/1.1 200) 6 headers in 326 bytes (1 switches on core 1)
+[pid: 7589|app: 0|req: 5/5] 192.168.153.146 () {52 vars in 1074 bytes} [Sat Feb 12 17:59:00 2022] POST /user/register/ => generated 2150 bytes in 9 msecs (HTTP/1.1 200) 6 headers in 326 bytes (1 switches on core 0)
+[pid: 7589|app: 0|req: 6/6] 192.168.153.146 () {52 vars in 1074 bytes} [Sat Feb 12 17:59:14 2022] POST /user/register/ => generated 36 bytes in 1738 msecs (HTTP/1.1 200) 4 headers in 142 bytes (1 switches on core 1)
+[pid: 7589|app: 0|req: 7/7] 192.168.153.146 () {44 vars in 861 bytes} [Sat Feb 12 17:59:25 2022] GET / => generated 10835 bytes in 22 msecs (HTTP/1.1 200) 5 headers in 159 bytes (1 switches on core 0)
+[pid: 7589|app: 0|req: 8/8] 192.168.153.146 () {44 vars in 867 bytes} [Sat Feb 12 17:59:40 2022] GET /article/3/ => generated 8511 bytes in 21 msecs (HTTP/1.1 200) 5 headers in 158 bytes (1 switches on core 1)
+[pid: 7589|app: 0|req: 9/9] 192.168.153.146 () {44 vars in 879 bytes} [Sat Feb 12 18:16:55 2022] GET /user/login/ => generated 1995 bytes in 8 msecs (HTTP/1.1 200) 6 headers in 326 bytes (1 switches on core 0)
+[pid: 7580|app: 0|req: 1/10] 192.168.153.146 () {52 vars in 1065 bytes} [Sat Feb 12 18:17:00 2022] POST /user/login/ => generated 0 bytes in 164 msecs (HTTP/1.1 302) 8 headers in 497 bytes (1 switches on core 0)
+[pid: 7589|app: 0|req: 10/11] 192.168.153.146 () {46 vars in 959 bytes} [Sat Feb 12 18:17:00 2022] GET /user/profile/ => generated 10211 bytes in 14 msecs (HTTP/1.1 200) 5 headers in 159 bytes (1 switches on core 1)
+<tr><th><label for="id_email">Email:</label></th><td><input type="email" name="email" value="hybpjx@163.com" class="input" placeholder="用户名/邮箱" disabled="disabled" required id="id_email"></td></tr>
+[pid: 7580|app: 0|req: 2/12] 192.168.153.146 () {44 vars in 938 bytes} [Sat Feb 12 18:17:01 2022] GET /user/editor_user/ => generated 12075 bytes in 57 msecs (HTTP/1.1 200) 6 headers in 327 bytes (1 switches on core 1)
+<tr><th><label for="id_email">Email:</label></th><td><input type="email" name="email" value="hybpjx@163.com" class="input" placeholder="用户名/邮箱" disabled="disabled" required id="id_email"></td></tr>
+[pid: 7579|app: 0|req: 1/13] 192.168.153.146 () {46 vars in 969 bytes} [Sat Feb 12 18:17:18 2022] GET /user/editor_user/ => generated 12274 bytes in 132 msecs (HTTP/1.1 200) 6 headers in 327 bytes (1 switches on core 0)
+[pid: 7589|app: 0|req: 11/14] 192.168.153.146 () {46 vars in 969 bytes} [Sat Feb 12 18:17:18 2022] GET /user/editor_user/ => generated 12274 bytes in 29 msecs (HTTP/1.1 200) 6 headers in 327 bytes (1 switches on core 0)
+[pid: 7589|app: 0|req: 12/15] 192.168.153.146 () {46 vars in 969 bytes} [Sat Feb 12 18:17:19 2022] GET /user/editor_user/ => generated 12274 bytes in 30 msecs (HTTP/1.1 200) 6 headers in 327 bytes (1 switches on core 1)
+[pid: 7589|app: 0|req: 13/16] 192.168.153.146 () {46 vars in 969 bytes} [Sat Feb 12 18:17:19 2022] GET /user/editor_user/ => generated 12274 bytes in 27 msecs (HTTP/1.1 200) 6 headers in 327 bytes (1 switches on core 0)
+Sat Feb 12 18:19:55 2022 - uWSGI worker 10 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Sat Feb 12 18:19:55 2022 - uWSGI worker 1 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Sat Feb 12 18:19:55 2022 - uWSGI worker 7 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Sat Feb 12 18:19:55 2022 - uWSGI worker 4 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Sat Feb 12 18:19:55 2022 - uWSGI worker 3 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Sat Feb 12 18:19:55 2022 - uWSGI worker 10 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Sat Feb 12 18:19:55 2022 - uWSGI worker 8 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Sat Feb 12 18:19:55 2022 - uWSGI worker 3 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Sat Feb 12 18:19:55 2022 - uWSGI worker 1 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Sat Feb 12 18:19:55 2022 - uWSGI worker 9 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Sat Feb 12 18:19:55 2022 - uWSGI worker 9 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Sat Feb 12 18:19:55 2022 - uWSGI worker 4 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Sat Feb 12 18:19:55 2022 - uWSGI worker 5 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Sat Feb 12 18:19:55 2022 - uWSGI worker 6 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Sat Feb 12 18:19:55 2022 - uWSGI worker 7 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Sat Feb 12 18:19:55 2022 - uWSGI worker 2 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Sat Feb 12 18:19:55 2022 - uWSGI worker 8 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Sat Feb 12 18:19:55 2022 - uWSGI worker 2 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Sat Feb 12 18:19:55 2022 - uWSGI worker 6 screams: UAAAAAAH my master disconnected: i will kill myself !!!
+Sat Feb 12 18:19:55 2022 - uWSGI worker 5 screams: UAAAAAAH my master disconnected: i will kill myself !!!

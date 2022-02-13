@@ -1,0 +1,125 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block public %}
+    <title>发布文章</title>
+{% endblock %}
+
+
+{% block content_left %}
+
+<script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
+<script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
+
+    {% if errmsg is None %}
+        <form class="box-card" action="" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            {{ form.errors }}
+            <input type="submit" style="margin-top: 1em" class="button is-link is-fullwidth" value="发布">
+        </form>
+    {% endif %}
+
+
+    <div class="box carousel-arrow-left-enter">
+        <div>
+            <p>{{ errmsg }}</p>
+        </div>
+    </div>
+{#    <form action="">#}
+{##}
+{##}
+{##}
+{#    <div class="field is-horizontal">#}
+{#  <div class="field-label is-normal">#}
+{#    <label class="label">标题</label>#}
+{##}
+{#  </div>#}
+{#  <div class="field-body">#}
+{#    <div class="field">#}
+{#      <p class="control is-expanded has-icons-left">#}
+{#        <input class="input" type="text" placeholder="标题" name="title">#}
+{#        <span class="icon is-small is-left">#}
+{#          <i class="fas fa-user"></i>#}
+{#        </span>#}
+{#      </p>#}
+{#    </div>#}
+{##}
+{#  </div>#}
+{#</div>#}
+{##}
+{##}
+{##}
+{#<div class="field is-horizontal">#}
+{#  <div class="field-label is-normal">#}
+{#    <label class="label">分类</label>#}
+{#  </div>#}
+{#  <div class="field-body">#}
+{#    <div class="field is-narrow">#}
+{#      <div class="control">#}
+{#        <div class="select is-fullwidth">#}
+{#          <select>#}
+{##}
+{#          {% for name in category  %}#}
+{#              <option>{{ name.name }}</option>#}
+{#          {% endfor %}#}
+{##}
+{##}
+{##}
+{##}
+{#          </select>#}
+{#        </div>#}
+{#      </div>#}
+{#    </div>#}
+{#  </div>#}
+{#</div>#}
+{##}
+{#<div class="field is-horizontal">#}
+{#  <div class="field-label">#}
+{#    <label class="label">是否发布为热门文章</label>#}
+{#  </div>#}
+{#  <div class="field-body">#}
+{#    <div class="field is-narrow">#}
+{#      <div class="control">#}
+{#        <label class="radio">#}
+{#          <input type="radio" name="member">#}
+{#          是#}
+{#        </label>#}
+{#        <label class="radio">#}
+{#          <input type="radio" name="member">#}
+{#          否#}
+{#        </label>#}
+{#      </div>#}
+{#    </div>#}
+{#  </div>#}
+{#</div>#}
+{##}
+{#<div class="field is-horizontal">#}
+{#  <div class="field-label is-normal">#}
+{#    <label class="label">内容</label>#}
+{#  </div>#}
+{#  <div class="field-body">#}
+{#    <div class="field">#}
+{#      <div class="control">#}
+{##}
+{#        <textarea  name="context" class="textarea" placeholder="Explain how we can help you"></textarea>#}
+{##}
+{#      </div>#}
+{#    </div>#}
+{#  </div>#}
+{#</div>#}
+{##}
+{#<div class="field is-horizontal">#}
+{#  <div class="field-label">#}
+{#    <!-- Left empty for spacing -->#}
+{#  </div>#}
+{#  <div class="field-body">#}
+{#    <div class="field">#}
+{#      <div class="control">#}
+{#        <input type="submit" class="button is-primary" value="发布">#}
+{#      </div>#}
+{#    </div>#}
+{#  </div>#}
+{#</div>#}
+{#</form>#}
+{% endblock %}

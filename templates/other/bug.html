@@ -1,0 +1,92 @@
+{% extends 'other/words.html' %}
+
+{% block title %}
+    <title>bug提交</title>
+{% endblock %}
+
+{% block content_left %}
+
+    <form method="post" action="">
+    {% csrf_token %}
+    <div class="field">
+        <label class="label">请输入您的姓名</label>
+        <div class="control ">
+            <input class="input" type="text" placeholder="必填项" name="name">
+        </div>
+    </div>
+
+
+    <i class="fas fa-exclamation-triangle"></i>
+
+    <div class="field">
+        <label class="label">请输入您的邮箱：</label>
+        <div class="control ">
+            <input class="input" type="email" placeholder="*@*.com" name="email">
+            <span class="icon is-small is-left">
+                 <i class="fas fa-envelope"></i>
+            </span>
+            <span class="icon is-small is-right">
+      <i class="fas fa-exclamation-triangle"></i>
+    </span>
+        </div>
+{#        <p class="help is-danger">This email is invalid</p>#}
+    </div>
+
+    <div class="field">
+        <label class="label">目前还满意吗?</label>
+        <div class="control">
+            <div class="select">
+                <select>
+                    <option>还行</option>
+                    <option>不行</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    {% block message %}
+
+
+    <div class="field">
+        <label class="label">请您简述您遇到的问题</label>
+        <div class="control">
+            <label>
+                {# <input class="textarea" type="text" placeholder="您可以简单描述您遇到的问题">#}
+                <textarea name="text_area" class="textarea" placeholder="Textarea"></textarea>
+            </label>
+        </div>
+    </div>
+
+    <div class="field">
+        <div class="control">
+            <label class="checkbox">
+                <input type="checkbox" name="checked" checked>
+                我同意 <a href="#">不说谎法律</a>
+            </label>
+        </div>
+    </div>
+{% endblock %}
+
+
+    <div class="field is-grouped">
+        <div class="control">
+            <input type="submit" name="submit" class="button is-link" value="提交">
+
+{#            <button id='button_submit' onclick="toHtml()" class="button is-link">提交</button>#}
+        </div>
+
+        <div class="control">
+            <a href="/" class="button is-link is-light">
+                取消
+            </a>
+
+        </div>
+
+
+        <p class=" is-danger has-text-danger-dark">
+            {{ errmsg }}
+        </p>
+
+    </div>
+</form>
+{% endblock %}

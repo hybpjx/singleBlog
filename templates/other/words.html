@@ -1,0 +1,107 @@
+{% extends 'blog/base.html' %}
+
+
+{% block title %}
+    <title>留言板</title>
+{% endblock %}
+
+
+{% block content_left %}
+
+    {% if word_list %}
+         {% for word in word_list %}
+    <article class="message is-dark">
+        <div class="message-header">
+            <p>{{ user.username }}</p>
+            <button class="is-info" aria-label="is-danger"></button>
+        </div>
+
+            <div class="message-body">
+
+
+                {{ word.words }}
+
+
+            </div>
+
+        {% endfor %}
+
+        {% if page_obj %}
+
+                        <nav class="pagination is-centered" role="navigation" aria-label="pagination">
+                        {% if page_obj.has_previous %}
+                            <a class="pagination-previous" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+                        {% elif page_obj.has_next %}
+                            <a class="pagination-next" href="?page={{ page_obj.next_page_number }}">Next page</a>
+                        {% endif %}
+
+                            <ul class="pagination-list">
+                                {% if page_obj.page_number > 3 %}
+                                    <li><a class="pagination-link" aria-label="Goto page {{ page_obj.start_index }}">{{ page_obj.start_index }}</a></li>
+                                    <li><span class="pagination-ellipsis">&hellip;</span></li>
+                                {% endif %}
+
+                                {% if page_obj.has_previous %}
+                                    <li><a class="pagination-link" aria-label="Goto page {{ page_obj.previous_page_number }}" href="?page = {{ page_obj.previous_page_number }}">{{ page_obj.previous_page_number }}</a></li>
+                                {% endif %}
+
+                                <li><a class="pagination-link is-current" aria-label="Page {{ page_obj.number }}"
+                                       aria-current="page">{{ page_obj.number }}</a></li>
+
+                                {% if page_obj.has_next  %}
+
+                                    <li><a class="pagination-link" aria-label="Goto page {{ page_obj.next_page_number }}" href="?page={{ page_obj.next_page_number }}">
+                                        {{ page_obj.next_page_number }}</a></li>
+
+                                {% endif %}
+
+                                {% if page_obj.has_next %}
+
+                                {% endif %}
+{#                                {% if page_obj.end_index %}#}
+{#                                <li><span class="pagination-ellipsis">&hellip;</span></li>#}
+{#                                <li><a class="pagination-link" aria-label="Goto page {{ page_obj.end_index }}">{{ page_obj.end_index }}</a></li>#}
+{#                                {% endif %}#}
+                            </ul>
+                        </nav>
+
+
+                    {% endif %}
+
+        {{ errmsg }}
+    </article>
+    {% else %}
+
+    {% endif %}
+
+
+    {% if user.is_authenticated %}
+    <form action="" class="footer" method="post">
+        {% csrf_token %}
+        <div class="field">
+            <label class="label">欢迎您的留言</label>
+            <div class="control">
+                <label>
+                    <textarea name="text_area" class="textarea" placeholder="Textarea"></textarea>
+                </label>
+            </div>
+        </div>
+
+        {{ errmsg }}
+
+        <div class="control">
+            <input type="submit" value="提交" class="button is-dark"/>
+        </div>
+
+    </form>
+
+        {% else %}
+
+    {% endif %}
+
+{% endblock %}
+
+
+
+
+

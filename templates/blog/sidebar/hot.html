@@ -1,0 +1,22 @@
+{% load sidebar %}
+
+{% get_hot_list as hot_list %}
+
+{% for hot in hot_list %}
+    <ul>
+        <li>
+            <a href="{% url 'blog:article_detail' hot.id %}">{{ hot.title }}</a>
+        </li>
+    </ul>
+{% endfor %}
+
+
+{#{% get_hot_pageview_list as hot_list %}#}
+{##}
+{#{% for hot in hot_list %}#}
+{#    <ul>#}
+{#        <li>#}
+{#            <a href="{% url 'blog:article_detail' hot.id %}">{{ hot.title }}</a>#}
+{#        </li>#}
+{#    </ul>#}
+{#{% endfor %}#}
